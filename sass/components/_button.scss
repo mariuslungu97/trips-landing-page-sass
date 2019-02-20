@@ -1,0 +1,82 @@
+.btn { 
+    //.btn, .btn:link, .btn:visited
+    &,
+    &:link,
+    &:visited {
+
+    text-decoration: none;
+    border : none;
+    font-size : 1.5rem;
+    padding : 1.5rem 4rem;
+    cursor: pointer;
+    border-radius: 10rem;
+    font-weight : 700;
+    display : inline-block;
+    text-transform: uppercase;
+    position: relative;
+    transition: all .3s;
+
+    }
+    &--animated {
+        animation: moveInTop .75s ease-out;
+        animation-delay: 1s; // same as declaring animation : moveInTop .7s 1s ease-out;
+        animation-fill-mode: backwards; //whatever the starting animation state is, I want to apply that before the animation starts.
+        //animation-fill-mode: forwards ; whatever the ending animation state is, I want to apply that after the animation ends.
+        //animation-fill-mode: both; apply the starting animation state before the animation starts, and maintain the last state after the animation ends
+    }
+    &::after {
+        //always declare the content property, if you want to use the ::before and ::after selectors
+        //create an indentical button, position it in the back of the original button, and then scale it and make it disspear when hover
+        content : "";
+        display : inline-block;
+        background : inherit;
+        width : 100%;
+        height : 100%;   
+        border-radius: 10rem;
+        position: absolute;
+        top : 0;
+        left : 0;
+        z-index : -1;
+        transition: all .4s;
+
+    }
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1.5rem 4rem rgba($color-black,.20);
+
+        //.btn:hover::after - the after element when the button is hovered : select the after element when the button is hovered
+        &::after {
+            transform: scale(1.4, 1.6);
+            opacity : 0;
+        }
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 1rem 1.5rem rgba($color-black,.15);
+    }
+}
+.btn--secondary {
+    font-size : 1.6rem;
+    font-weight : 400;
+    text-decoration: none;
+    display : inline-block;
+    padding : .5rem 1rem;
+    border-bottom : 1px solid $color-primary-dark;
+    transition: all .3s;
+    
+    &:hover {
+        background : $color-primary;
+        color : $color-white;
+        box-shadow: 0 .5rem 1.5rem rgba($color-black,.25);
+        border : none;
+        transform: translateY(-3px);
+    }
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black,.15);
+        transform: translateY(-1px);
+    }
+}
+.btn--green-reverse {background-color : $color-primary; color : $color-white};
+.btn--white { background : $color-white; color : $color-grey-dark;}
+.btn--green { color : $color-primary;}
+

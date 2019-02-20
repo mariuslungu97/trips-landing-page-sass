@@ -1,0 +1,191 @@
+.card {
+    height : 53rem;
+    position: relative;
+    perspective: 550px; // a lower value will result in a more intensive and abrupt 3d effect than a higher value.
+    &__container {
+        transform-style: preserve-3d;
+        transition: all .7s ease-out;
+        position: absolute;
+        height : 100%;
+        width : 100%;
+        &:hover {
+            transform : rotateY(180deg);
+        }
+    }
+    
+    &__side {
+        height : 50rem;
+        position: absolute;
+        top : 0;
+        left : 0;
+        width : 100%;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba($color-black,.15);
+        backface-visibility: hidden;
+ 
+        &--front {
+            background-color : $color-white;
+            transform: rotateY(0);
+        }
+        &--back {
+            transform: rotateY(180deg);
+            &-p1 {
+                background-image : linear-gradient(to right, $color-card-1-light,$color-card-1-dark);
+            }
+            &-p2 {
+                background-image : linear-gradient(to right, $color-primary-light,$color-primary-dark);
+            }
+            &-p3 {
+                background-image : linear-gradient(to right, $color-card-3-light,$color-card-3-dark);
+            }
+        }
+        
+    }
+    &__back {
+        display : block;
+        text-align : center;
+        &--text {
+            text-align : center;
+            display: block;
+            color : $color-white;
+            font-size : 1.5rem;
+            margin-top : 10rem;
+        }
+        &--price {
+            display : block;
+            text-align: center;
+            font-size : 6rem;
+            color : $color-white;
+            font-weight: 200;
+            margin-bottom : 2.5rem;
+        }
+        &--btn {
+            margin : 0 auto;
+        }
+    }
+    &__img {
+        height : 23rem;
+        width : 100%;
+        background-size: cover;
+        background-blend-mode: screen; // similar to what we have in photoshop. It lets the color be seen through the image
+        //create a form through setting polygon points
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        border-top-left-radius: 3px;
+        border-top-right-radius : 3px;
+        
+        &--1 {
+            background-image : linear-gradient(to right bottom, $color-card-1-light,$color-card-1-dark), url('../img/nat-5.jpg');
+        }
+        &--2 {
+            background-image : linear-gradient(to right bottom, $color-primary-light,$color-primary-dark), url('../img/nat-6.jpg');
+        }
+        &--3 {
+            background-image : linear-gradient(to right bottom, $color-card-3-light,$color-card-3-dark), url('../img/nat-7.jpg');
+        }
+    }
+    &__headline {
+        font-size : 2.8rem;
+        text-align : right;
+        text-transform : uppercase;
+        color : $color-white;
+        font-weight : 300;
+        display : inline-block;
+        position: absolute;
+        top : 10rem;
+        right : 2rem;
+        width: 75%;
+        
+        &-span {
+            padding : 1rem 1.5rem;
+            box-decoration-break: clone;
+
+            &--p1 {
+                background-image : linear-gradient(to right bottom, rgba($color-card-1-light,.85),rgba($color-card-1-dark,.85));
+            }
+            &--p2 {
+                background-image : linear-gradient(to right bottom, rgba($color-primary-light,.85),rgba($color-primary-dark,.85));
+            }
+            &--p3 {
+                background-image : linear-gradient(to right bottom, rgba($color-card-3-light,.85),rgba($color-card-3-dark,.85));
+            }
+        }
+    }
+    &__list {
+        font-size : 1.5rem;
+        text-align : center;
+        font-weight : 400;
+        color : $color-grey-dark;
+        ul {
+            padding : 1.5rem 3.5rem;
+            list-style: none;
+        }
+        li {
+            padding : 1rem 0;
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-grey-light-1;
+            }
+            
+        }
+    }
+
+    @media only screen and (max-width : 56.25em),
+           only screen and (hover : none) {
+        height : auto;
+        position: relative;
+
+        &__container {
+            transition: all .7s ease-out;
+            position: relative;
+            height : 100%;
+            width : 100%;
+            
+            &:hover {
+                transform: rotateY(0);
+            }
+        }
+        
+        &__side {
+            height : auto;
+            position: relative;
+            width : 100%;
+            border-radius: 3px;
+            overflow: hidden;
+
+            &--front {
+                background-color : $color-white;
+                transform: rotateY(0);
+            }
+            &--back {
+                transform: rotateY(0);
+      
+                &-p1 {
+                    background-image : linear-gradient(to right, $color-card-1-light,$color-card-1-dark);
+                }
+                &-p2 {
+                    background-image : linear-gradient(to right, $color-primary-light,$color-primary-dark);
+                }
+                &-p3 {
+                    background-image : linear-gradient(to right, $color-card-3-light,$color-card-3-dark);
+                }
+            }
+            
+        }
+        &__back {          
+            &--text {  
+                font-size : 2rem;
+                margin-top : 2rem;
+            }
+            &--price {              
+                font-size : 6rem;
+            }
+            &--btn-container {
+                margin : 3rem 0;
+            }
+            &--btn {
+                margin : 0 auto;
+            }
+        }
+        
+    }
+}

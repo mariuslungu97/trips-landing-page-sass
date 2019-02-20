@@ -1,0 +1,75 @@
+.form {
+    width : 100%;
+    height : 100%;
+
+    &__input {
+        display : block;
+        width : 80%;
+        padding : 1.75rem;
+        font-size : 1.5rem;
+        color : $color-grey-dark;
+        margin-bottom : 4rem;
+        border : none;
+        border-radius: 3px;
+        transition: .2s all;
+        border-bottom : 3px solid transparent;
+
+        &:focus {
+            outline : none;
+            border-bottom : 3px solid $color-card-1-dark;
+            box-shadow: 0 1.5rem 4rem rgba($color-black,.15);
+        }
+
+    }
+    &__radio {
+        width : 49%;
+        display : inline-block;
+        color : $color-grey-dark;
+        font-size : 1.7rem;
+        padding : 1rem 0;
+        position: relative;
+
+        &--btn {
+            display : none;
+        }
+
+        &--text {
+            cursor : pointer;
+        }
+
+        @include respond(tab-port) {
+            width : 100%;
+            margin-bottom : 2rem;
+        }
+
+        &-button {
+            position: relative;
+            top : 7px;
+            display : inline-block;
+            margin-right : 1rem;
+            height : 3rem;
+            width : 3rem;
+            border : 4px solid $color-primary;
+            border-radius : 50%;
+
+            &::after {
+                content : '';
+                width : 1.3rem;
+                height : 1.3rem;
+                display : inline-block;
+                background: $color-primary;
+                position: absolute;
+                top : 50%;
+                left : 50%;
+                transform: translate(-50%,-50%);
+                border-radius: 50%;
+                opacity : 0;
+                transition: all .2s;
+            }
+        }   
+    }
+
+    &__radio--btn:checked ~ &__radio--text &__radio-button::after {
+        opacity : 1;
+    }
+}

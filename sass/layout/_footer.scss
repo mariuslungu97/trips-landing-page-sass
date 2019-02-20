@@ -1,0 +1,48 @@
+.footer {
+    padding : 9rem 0;
+    background : $color-footer;
+    margin-top : -.1rem;
+
+    @include respond(tab-port) {
+        padding : 8rem 0;
+        text-align : center;
+    }
+
+    &__img {
+        width : 15rem;
+    }
+
+    &__list {
+        padding-top : 2rem;
+        border-top: 1px solid rgba($color-grey-light-1,.5);
+        color : $color-white;
+        font-size : $default-font-size;
+        ul {
+            list-style : none;
+            font-size : 1.6rem;
+            li {
+                display : inline-block;
+
+                &:not(:last-child) {
+                    margin-right : 2rem;
+                }          
+            }
+        }
+        
+    }
+    &__link {
+        display : inline-block;
+        text-decoration: none;
+        color : $color-white;
+        text-transform: uppercase;
+        transition: all .2s;
+        
+        &:hover {
+            transform: rotate(5deg) scale(1.3);
+            background: $color-footer;
+            color : $color-primary;
+            box-shadow: 0 1rem 2rem rgba($color-black,.25);
+        }
+        
+    }
+}

@@ -1,0 +1,43 @@
+@import "animations";
+@import "typography";
+@import "utilities";
+
+// Basic CSS Reset : if you want to be more professional, use Normalize.css reset.
+*,
+*::before,
+*::after {
+    margin : 0;
+    padding : 0;
+    box-sizing: inherit;
+}
+html {
+    font-size : 62.5%; // 62.5% of 16px ( default value ) = 10px; [1200px-1800px]
+
+    //width less than 1200px?
+    @include respond(tab-land) {
+        font-size : 56.25%; //1rem = 9px
+    }
+    //width less than 900px?
+    @include respond(tab-port) {
+        font-size : 50%; //1rem = 8px ; 8 / 16 ( default ) = 0.5 * 100 = 50%;
+    }
+    //width greater than 1800px?
+    @include respond(big-desktop) {
+        font-size : 75%; // 1rem = 12px
+    }
+}
+body {
+    font-family : 'Lato', sans-serif;
+    line-height : 1.7;
+    padding : 3rem;
+    box-sizing: border-box;
+
+    @include respond(tab-port) {
+        padding : 0;
+    }
+}
+//used to apply background-color and color to text when highlighted using the mouse
+::selection {
+    background-color : $color-primary;
+    color : $color-white;
+}

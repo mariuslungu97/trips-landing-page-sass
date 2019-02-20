@@ -1,0 +1,42 @@
+// clearfix for IE8 and up. The clearfix is applied to the parent element that contains floated elements
+
+@mixin clearfix {
+    &::after {
+        content : '';
+        display : table;
+        clear : both;
+    }
+}
+
+/* Media Query Manager */
+/*
+0-600px : Phones
+600px-900px : Tablets Portrait Mode
+900px-1200px : Tablets Landscape Mode
+[1200-1800] - this is the range where our styles apply
+1800px+ : Large Desktops
+*/
+
+/* Mixin Documentation (Names) :
+    -phone
+    -tab-port
+    -tab-land
+    -big-desktop
+*/
+@mixin respond($breakpoint) {
+    // in SASS, we can use conditionals such as @if, @else if, @else
+    // we can also use loops, such as @for and @while
+    @if $breakpoint == phone {
+        @media only screen and (max-width : 37.5em) {@content}; // 600px
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width : 56.25em) {@content}; //900px
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width : 75em) {@content}; //1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width : 112.5em) {@content}; // 1800px
+    }
+}
+

@@ -1,0 +1,63 @@
+.heading-primary {
+    &--main {
+        font-size : 6rem;
+        letter-spacing: 3.5rem;
+        font-weight : 400;  
+
+        @include respond(phone) {
+            letter-spacing: 1rem;
+            font-size : 5rem;
+        }
+    }
+
+    &--sub {
+        font-size : 2.1rem;
+        font-weight : 700;
+        letter-spacing: 1.7rem;
+
+        @include respond(phone) {
+            letter-spacing : .5rem;
+        }
+    }
+}
+
+.heading-secondary {
+    display : inline-block;
+    color : $color-primary;
+
+    //technique used to apply a gradient to the text
+    //use if only the browser supports background-clip
+    @supports(-webkit-background-clip : text) {
+        background : linear-gradient(to right, $color-primary-light,$color-primary-dark);
+        -webkit-background-clip : text;
+        -webkit-text-fill-color : transparent;
+    }
+    
+    font-size : 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size : 3rem;
+    }
+    @include respond(phone) {
+        font-size : 2rem;
+    }
+
+    &:hover {
+        transform: scale(1.1) skew(10deg, 3deg);
+        text-shadow: 0 2rem 1.5rem rgba($color-black,.2); 
+    }
+}
+.heading-tertiary {
+    font-size: 1.6rem;
+    color : $color-grey-dark;
+    font-weight: 700;
+    margin-bottom : 1.5rem;
+}
+.paragraph {
+    font-size : 1.5rem;
+    color : $color-grey-dark;
+    font-weight : 400;
+}

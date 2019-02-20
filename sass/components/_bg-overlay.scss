@@ -1,0 +1,14 @@
+//create a grey-light background-overlay which overlaps the video
+//if you want to set a z-index, you need to set the position of the element.
+.bg-overlay {
+    position: absolute;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    z-index : 5;
+    
+    &--grey {
+        background-color : rgba($color-grey-light-1,.8);
+    }
+}
